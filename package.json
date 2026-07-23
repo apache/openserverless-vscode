@@ -1,0 +1,60 @@
+{
+  "name": "ops-vscode-extension",
+  "displayName": "ops-extension",
+  "icon": "media/ops_market.png",
+  "description": "Openserverless extension for VS Code",
+  "version": "1.0.1",
+  "publisher": "nuvolaris",
+  "repository": "https://github.com/openserverless/openserverless-vscode-extension",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "openserverless-container",
+          "title": "Openserverless",
+          "icon": "media/logo.png"
+        }
+      ]
+    },
+    "views": {
+      "openserverless-container": [
+        {
+          "id": "openserverless-command-palette",
+          "name": "Command Palette"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "openserverless-command-palette",
+        "contents": "\n[Devel](command:ops.devel)\n[Deploy](command:ops.deploy)\n[Login](command:ops.login)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node ./esbuild.js",
+    "package": "set NODE_ENV=production && node ./esbuild.js",
+    "lint": "eslint \"src/**/*.ts\"",
+    "watch": "node ./esbuild.js --watch"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
